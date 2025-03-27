@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="d-flex justify-content-center m-4">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Jiva dada</h5>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-around">
+    {% for i in pardada %}
+    <div class="card" style="width: 10rem;">
+        <div class="card-body">
+            <h6 class="card-title">{{ i }}</h3>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="d-flex justify-content-around mt-3">
+        {% for pardada in pardada %}
+        <div class="card" style="width: 10rem;">
+            <div class="card-body">
+                {% for dada in dada %}
+                {% if dada.son_of_jivadada == pardada %}
+                <h6 class="card-title">{{ dada }}</h6>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% endblock body %}

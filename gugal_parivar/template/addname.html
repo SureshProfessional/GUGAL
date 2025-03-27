@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block title %} Add name {% endblock title %}
+{% block body %}
+
+<div class="container mt-5 w-75 border">
+    <form class="m-2" method="POST" action="index">
+        {% csrf_token %}
+        <div class="dropdown">
+            તમારા પરદાદા :-
+            <div class="controlgroup">
+                <select id="pardadaid">
+                    {% for i in pardada %}
+                    <option value="i.id">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div> 
+        </div>
+        <div class="dropdown">
+            તમારા દાદા :-
+            <div class="controlgroup">
+                <select id="dadaid">
+                    {% for pardada in pardada %} {% for dada in dada %}
+                     {% if dada.son_of_jivadada == pardada %}
+                    <option value="i.id">{{ dada }}</option>
+                    {% endif %} {% endfor %} {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control mt-2" id="formGroupExampleInput" placeholder="Enter your name" />
+        </div>
+    </form>
+</div>
+{% endblock body %}
